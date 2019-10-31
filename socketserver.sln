@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "socketserver", "socketserver\socketserver.csproj", "{037B86BC-833F-4FE0-ABAC-B98D4728FB81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "easysocket", "easysocket\easysocket.csproj", "{F412B7F1-23A6-429A-B62B-A522D95F3BDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "socketwin", "socketwin\socketwin.csproj", "{22D61FEF-5A57-4C9B-80E9-BE46E6F1ED80}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "easysocketPy", "easysocketPy\easysocketPy.pyproj", "{5EBC44D7-5595-4AD6-9AA4-3DBC581D1C05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{037B86BC-833F-4FE0-ABAC-B98D4728FB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{037B86BC-833F-4FE0-ABAC-B98D4728FB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{037B86BC-833F-4FE0-ABAC-B98D4728FB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{037B86BC-833F-4FE0-ABAC-B98D4728FB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F412B7F1-23A6-429A-B62B-A522D95F3BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F412B7F1-23A6-429A-B62B-A522D95F3BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F412B7F1-23A6-429A-B62B-A522D95F3BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F412B7F1-23A6-429A-B62B-A522D95F3BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22D61FEF-5A57-4C9B-80E9-BE46E6F1ED80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22D61FEF-5A57-4C9B-80E9-BE46E6F1ED80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22D61FEF-5A57-4C9B-80E9-BE46E6F1ED80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22D61FEF-5A57-4C9B-80E9-BE46E6F1ED80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EBC44D7-5595-4AD6-9AA4-3DBC581D1C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EBC44D7-5595-4AD6-9AA4-3DBC581D1C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B39C170-2DD2-438B-9B62-6821EF069A36}
+	EndGlobalSection
+EndGlobal
