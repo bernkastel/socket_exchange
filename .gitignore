@@ -22,3 +22,13 @@ easysocketPy/.idea/
 easysocketPy/__pycache__/
 
 socketwin/
+
+easysocketPy/log.log
+
+.vs/socketserver/v16/.suo
+
+*.lock
+
+.vs/socketserver/DesignTimeBuild/
+
+*.ide
