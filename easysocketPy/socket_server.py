@@ -22,7 +22,7 @@ class SocketServer(object):
             self.m_listen_thread = threading.Thread(target=self.listen_client_connect)
             self.m_listen_thread.start()
             self.m_listen_thread_run = 1
-            self.normal_log("服务器监听线程开启")
+            self.normal_log("服务器监听线程开启: " + ip_address + ":" + str(port))
         except:
             self.m_listen_thread_run = 0
             self.error_log("开启监听线程失败")

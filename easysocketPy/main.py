@@ -1,6 +1,7 @@
 import logging
 import threading
 import time
+import sys 
 
 import socket_client
 import socket_server
@@ -22,7 +23,9 @@ def start_client_listen():
     client.close_connection()
 
 
-server = socket_server.SocketServer("127.0.0.1", 10188)
+ip_add = sys.argv[1] if len(sys.argv) > 1 else "47.100.223.124"
+port = int(sys.argv[2]) if len(sys.argv) > 2 else 10188
+server = socket_server.SocketServer(ip_add, port)
 #client_send_thread = threading.Thread(target=start_client_send)
 #client_send_thread.start()
 #client_listen_thread = threading.Thread(target=start_client_listen())
