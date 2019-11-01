@@ -56,7 +56,7 @@ class SocketServer(object):
         while True:
             connection, addr = self.m_server_socket.accept()
             respond_data = {"result": 0, "message": "连接成功"}
-            connection.send(bytes(json.dumps(respond_data), encoding="utf8"))
+            connection.send(bytes(json.dumps(respond_data, ensure_ascii=False), encoding="utf8"))
             self.normal_log("接收连接请求：" + addr[0] + ":" + str(addr[1]))
             receive_thread = threading.Thread(target=self.receive_message, args=(connection,))
             receive_thread.start()
@@ -214,7 +214,7 @@ class ClientInfo(object):
     def on_echo(self, query_json, respond_json):
         respond_json["result"] = 0
         message = "接收客户端[{0}]消息({1})"
-        message = message.format(self.Name, json.dumps(query_json))
+        message = message.format(self.Name, json.dumps(query_json, ensure_ascii=False))
         self.normal_log(message)
         return respond_json
 
@@ -227,5 +227,5 @@ class ClientInfo(object):
             message = "无法识别的请求：" + action
             respond_json["action"] = "error"
             respond_json["data"] = message
-            self.normal_log("请求处理失败(" + json.dumps(respond_json) + ")")
-        self.m_socket.send(bytes(json.dumps(respond_json), encoding='utf8'))
+            self.normal_log("请求处理失败(" + json.dumps(respond_json, ensure_ascii=False) + ")")
+        self.m_socket.send(bytes(json.dumps(respond_json, ensure_ascii=False), encoding='utf8'))
