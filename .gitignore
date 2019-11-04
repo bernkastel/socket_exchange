@@ -32,3 +32,7 @@ easysocketPy/log.log
 .vs/socketserver/DesignTimeBuild/
 
 *.ide
+
+*.ide-wal
+
+*.ide-shm

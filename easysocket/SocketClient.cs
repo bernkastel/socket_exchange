@@ -105,6 +105,31 @@ namespace easysocket
             }
         }
 
+        public string SingleListen()
+        {
+            string result = null;
+            if (m_clientSocket != null)
+            {
+                try
+                {
+                    JObject json = new JObject();
+                    json["name"] = Name;
+                    json["action"] = "listen";
+                    m_clientSocket.Send(Encoding.UTF8.GetBytes(json.ToString()));
+                    Console.WriteLine("[{0}]> 发出监听请求（{1}）", Name, json.ToString());
+                    result = ReceiveData();
+                    Console.WriteLine("[{0}]> 监听消息接收（{1}）", Name, result);
+                }
+                catch(Exception err)
+                {
+                    Console.WriteLine("[{0}]> 监听消息错误：{1}", Name, err.Message);
+                    m_clientSocket.Shutdown(SocketShutdown.Both);
+                    m_clientSocket.Close();
+                }
+            }
+            return result;
+        }
+
         public void CloseConnection()
         {
             if (m_clientSocket != null)
