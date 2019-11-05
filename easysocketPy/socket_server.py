@@ -81,6 +81,8 @@ class SocketServer(object):
 
     def client_login(self, client):
         self.m_client_lock.acquire()
+        if client.Name in self.m_client_sockets:
+            self.remove_socket_from_client_sockets(self.m_client_sockets[client.Name].m_socket)
         self.m_client_sockets[client.Name] = client
         self.m_client_lock.release()
         return True
@@ -93,6 +95,10 @@ class SocketServer(object):
                 client_info = self.get_client(client_name)
                 if client_info is None:
                     client_info = ClientInfo(client_name, client_socket, self)
+                else:
+                    if client_info.m_socket != client_socket:
+                        self.remove_socket_from_client_sockets(client_info.m_socket)
+                        client_info = ClientInfo(client_name, client_socket, self)
                 client_info.process(data)
                 return True
             else:
@@ -148,6 +154,7 @@ class ClientInfo(object):
         self.regist_callback("send", self.on_send)
         self.regist_callback("listen", self.on_listen)
         self.regist_callback("echo", self.on_echo)
+        self.normal_log("记录新的客户端信息")
 
     def regist_callback(self, action, callback):
         self.m_on_callbacks[action] = callback

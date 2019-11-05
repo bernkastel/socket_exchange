@@ -91,7 +91,11 @@ namespace easysocket
         {
             lock (m_client_sockets)
             {
-                //TODO: 释放掉可能的旧链接
+                //释放掉可能的旧链接
+                if (m_client_sockets.ContainsKey(client.Name))
+                {
+                    RemoveSocketFromClientSockets(m_client_sockets[client.Name].Socket);
+                }
                 m_client_sockets[client.Name] = client;
             }
             return true;
@@ -107,6 +111,14 @@ namespace easysocket
                 ClientInfo clientInfo = null;
                 clientInfo = GetClient(clientName);
                 if (clientInfo == null) { clientInfo = new ClientInfo(clientName, clientSocket, this); }
+                else
+                {
+                    if (clientInfo.Socket != clientSocket)
+                    {
+                        RemoveSocketFromClientSockets(clientInfo.Socket);
+                        clientInfo = new ClientInfo(clientName, clientSocket, this);
+                    }
+                }
                 clientInfo.Process(json);
                 return true;
             }
@@ -164,6 +176,7 @@ namespace easysocket
                 m_socket = socket;
                 m_server = server;
                 m_send_data_wait = new List<Message>();
+                Console.WriteLine("S> [{0}]{1}", Name, "记录新的客户端信息");
             }
             public string Name { get { return m_name; } }
             public void SetData(Message msg)

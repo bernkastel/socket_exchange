@@ -36,3 +36,4 @@ easysocketPy/log.log
 *.ide-wal
 
 *.ide-shm
+/socketserver/bin/Release/netcoreapp2.1

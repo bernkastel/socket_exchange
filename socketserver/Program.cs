@@ -7,7 +7,7 @@ namespace socketserver
     class Program
     {
 
-        const string IP_ADDR = "47.100.223.124";
+        const string IP_ADDR = "127.0.0.1"; //47.100.223.124
         static void Main(string[] args)
         {
             //var server = new SocketServer(10188);
@@ -17,7 +17,7 @@ namespace socketserver
                 var client = new SocketClient("ClientSender", IP_ADDR, 10188);
                 if (client.Login())
                 {
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 2; i++)
                     {
                         Thread.Sleep(TimeSpan.FromSeconds(1));
                         var recv = client.SendMessage("ClientListener", "请求," + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -37,6 +37,7 @@ namespace socketserver
                 }
                 client.CloseConnection();
             })).Start();
+
 
             Thread.Sleep(TimeSpan.FromSeconds(1000));
 
