@@ -7,10 +7,12 @@ namespace socketserver
     class Program
     {
 
-        const string IP_ADDR = "127.0.0.1"; //47.100.223.124
+        //const string IP_ADDR = "47.100.223.124";
+        const string IP_ADDR = "127.0.0.1";
+
         static void Main(string[] args)
         {
-            //var server = new SocketServer(10188);
+            var server = new SocketServer(10188);
 
             (new Thread(() =>
             {
