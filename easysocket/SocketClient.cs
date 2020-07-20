@@ -78,6 +78,32 @@ namespace easysocket
             return result;
         }
 
+        public bool HeartBeat()
+        {
+            bool alive = false;
+            string result = "";
+            if (m_clientSocket != null)
+            {
+                try
+                {
+                    JObject json = new JObject();
+                    json["name"] = Name;
+                    json["action"] = "echo";
+                    json["data"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    m_clientSocket.Send(Encoding.UTF8.GetBytes(json.ToString()));
+                    result = ReceiveData();
+                    alive = true;
+                }
+                catch (Exception err)
+                {
+                    Console.WriteLine("[{0}]> 发送心跳错误：{1}", Name, err.Message);
+                    m_clientSocket.Shutdown(SocketShutdown.Both);
+                    m_clientSocket.Close();
+                }
+            }
+            return alive;
+        }
+
         public void Listen()
         {
             if (m_clientSocket != null)
